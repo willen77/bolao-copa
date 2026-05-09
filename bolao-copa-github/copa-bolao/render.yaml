@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: bolao-copa-server
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        scope: build
+    healthCheckPath: /health
+    routes:
+      - path: /
